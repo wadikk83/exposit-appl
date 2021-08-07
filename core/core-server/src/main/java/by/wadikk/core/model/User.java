@@ -23,11 +23,11 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column
+    @Column(unique = true)
     private @NonNull String login;
-    @Column
     private @NonNull String password;
     private String fullName;
+    @Column(unique = true)
     private @NonNull @Email String email;
     private String address;
 

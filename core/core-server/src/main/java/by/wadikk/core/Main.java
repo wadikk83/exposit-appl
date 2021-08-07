@@ -4,12 +4,12 @@ import by.wadikk.core.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 
-public class Main implements CommandLineRunner {
+public class Main {
     @Autowired
     private UserService userService;
 
-    @Override
+    /*@Override
     public void run(String... args) throws Exception {
-        userService.addNewUser("admin","admin","admin");
-    }
+        //userService.create("admin","admin","admin");
+    }*/
 }

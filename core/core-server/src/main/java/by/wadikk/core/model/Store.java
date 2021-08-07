@@ -14,7 +14,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
+
 public class Store {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

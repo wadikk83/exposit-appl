@@ -4,15 +4,43 @@ import by.wadikk.core.model.User;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
-@Service
+
 public interface UserService {
 
-    List<User> getAllUsers();
+    /**
+     * Создает нового клиента
+     * @param user - клиент для создания
+     */
+    boolean create(User user);
 
-    User getByLogin(String login);
+    /**
+     * Возвращает список всех имеющихся клиентов
+     * @return список клиентов
+     */
+    List<User> readAll();
 
-    void deleteUser(Long id);
+    /**
+     * Возвращает клиента по его ID
+     * @param id - ID клиента
+     * @return - объект клиента с заданным ID
+     */
+    User read(int id);
 
-    User addNewUser(String login, String password, String email);
+    /**
+     * Обновляет клиента с заданным ID,
+     * в соответствии с переданным клиентом
+     * @param client - клиент в соответсвии с которым нужно обновить данные
+     * @param id - id клиента которого нужно обновить
+     * @return - true если данные были обновлены, иначе false
+     */
+    boolean update(User client, int id);
+
+    /**
+     * Удаляет клиента с заданным ID
+     * @param id - id клиента, которого нужно удалить
+     * @return - true если клиент был удален, иначе false
+     */
+    boolean delete(int id);
 }

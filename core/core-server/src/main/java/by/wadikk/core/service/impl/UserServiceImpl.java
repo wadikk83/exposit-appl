@@ -4,37 +4,55 @@ import by.wadikk.core.model.User;
 import by.wadikk.core.repository.UserRepository;
 import by.wadikk.core.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
+@Service
 public class UserServiceImpl implements UserService {
 
-    UserRepository userRepository;
+    private UserRepository userRepository;
 
     @Autowired
     public UserServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
+    @Override
+    public boolean create(User user) {
+        if (userRepository.findById(user.getId()) == null) {
+            userRepository.save(user);
+            return true;
+        }
+        return false;
+    }
 
     @Override
-    public List<User> getAllUsers() {
+    public List<User> readAll() {
         return userRepository.findAll();
     }
 
     @Override
-    public User getByLogin(String login) {
-        return userRepository.findByLogin(login);
+    public User read(int id) {
+        return userRepository.getById(id);
     }
 
     @Override
-    public void deleteUser(Long id) {
-        userRepository.deleteById(id);
+    public boolean update(User user, int id) {
+        if (userRepository.getById(id) != null) {
+            userRepository.save(user);
+            return true;
+        }
+        return false;
     }
 
     @Override
-    public User addNewUser(String login, String password, String email) {
-        User user = new User(login, password, email);
-        return userRepository.save(user);
+    public boolean delete(int id) {
+        if (userRepository.findById(id) != null) {
+            userRepository.deleteById(id);
+            return true;
+        }
+        return false;
     }
 }
