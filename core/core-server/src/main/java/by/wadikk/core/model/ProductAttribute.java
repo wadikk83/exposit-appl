@@ -12,7 +12,7 @@ import lombok.NonNull;
 @Data
 @AllArgsConstructor
 public class ProductAttribute {
-    private Long id;
+    private Integer id;
     private @NonNull AttributeName attribute;
     private @NonNull Product product;
     private String value;

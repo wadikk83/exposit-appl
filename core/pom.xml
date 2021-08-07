@@ -13,8 +13,8 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>core-server</module>
         <module>core-starter</module>
+        <module>core-server</module>
     </modules>
 
 </project>

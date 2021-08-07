@@ -15,7 +15,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 public class Product {
-    private Long id;
+    private Integer id;
     private @NonNull String name;
     private List<Category> categories;
     private List<ProductAttribute> productAttributes;

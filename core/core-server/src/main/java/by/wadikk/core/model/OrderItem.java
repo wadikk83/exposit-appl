@@ -7,7 +7,7 @@ import lombok.Data;
 @AllArgsConstructor
 public class OrderItem {
 
-    private Long id;
+    private Integer id;
     private Product product;
     private int amount;
     private double productPrice;

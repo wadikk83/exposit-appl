@@ -7,7 +7,7 @@ import java.util.List;
 @Data
 public class Category {
 
-    private Long id;
+    private Integer id;
     private List<Category> childrenList;
     private Category parent;
     private String name;

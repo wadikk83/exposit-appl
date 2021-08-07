@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class OrderStatusName {
-    private Long id;
+    private Integer id;
     private String orderStatusName;
 }

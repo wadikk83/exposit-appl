@@ -11,7 +11,7 @@ import java.util.List;
 @Data
 public class Order {
 
-    private Long id;
+    private Integer id;
     private @NonNull User user;
     private @NonNull Store store;
     private Date dateCreated;

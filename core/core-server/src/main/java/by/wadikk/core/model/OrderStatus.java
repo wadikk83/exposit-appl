@@ -9,7 +9,7 @@ import java.util.Date;
 @AllArgsConstructor
 public class OrderStatus {
 
-    private Long id;
+    private Integer id;
     private OrderStatusName statusName;
     private Date timestamp;
     private Order order;
