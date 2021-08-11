@@ -5,8 +5,8 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
-    <changeSet author="wadikk" id="40">
-        <createTable tableName="products">
+    <changeSet author="wadikk" id="10">
+        <createTable tableName="attribute_name">
             <column name="id" type="java.lang.Long" autoIncrement="true">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
@@ -14,12 +14,5 @@
                 <constraints nullable="false" unique="true"/>
             </column>
         </createTable>
-
-        <addForeignKeyConstraint onDelete="CASCADE"
-                                 baseTableName="product_attribute"
-                                 baseColumnNames="product_id"
-                                 constraintName="fk_product_attribute->product"
-                                 referencedTableName="products"
-                                 referencedColumnNames="id"/>
     </changeSet>
 </databaseChangeLog>

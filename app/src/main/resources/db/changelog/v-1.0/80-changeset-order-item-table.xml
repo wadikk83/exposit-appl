@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="80" author="wadikk">
+        <createTable tableName="order_item">
+            <column name="id" type="java.lang.Long" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="article_id" type="java.lang.Long"/>
+            <column name="order_id" type="java.lang.Long"/>
+            <column name="amount" type="java.lang.Integer"/>
+            <column name="product_price" type="java.lang.Double"/>
+        </createTable>
+        <addForeignKeyConstraint onDelete="CASCADE"
+                                 baseColumnNames="article_id"
+                                 baseTableName="order_item"
+                                 constraintName="fk_order_item->article"
+                                 referencedColumnNames="id"
+                                 referencedTableName="article"/>
+
+        <addForeignKeyConstraint onDelete="CASCADE"
+                                 baseColumnNames="order_id"
+                                 baseTableName="order_item"
+                                 constraintName="fk_order_item->order"
+                                 referencedTableName="order"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet author="wadikk" id="30">
+        <createTable tableName="category">
+            <column name="id" type="java.lang.Long" autoIncrement="true">-->
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="name" type="java.lang.String">-->
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="parent_id" type="java.lang.Long"/>
+            <column name="id_parent" type="java.lang.Long"/>
+        </createTable>
+
+        <addForeignKeyConstraint baseColumnNames="parent_id"
+                                 baseTableName="category"
+                                 constraintName="fk_category_child->to_parent"
+                                 referencedTableName="category"
+                                 referencedColumnNames="id"
+                                 onDelete="CASCADE"/>
+    </changeSet>
+</databaseChangeLog>

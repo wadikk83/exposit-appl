@@ -26,7 +26,7 @@ public interface UserService {
      * @param id - ID клиента
      * @return - объект клиента с заданным ID
      */
-    User read(int id);
+    User read(long id);
 
     /**
      * Обновляет клиента с заданным ID,
@@ -35,12 +35,12 @@ public interface UserService {
      * @param id - id клиента которого нужно обновить
      * @return - true если данные были обновлены, иначе false
      */
-    boolean update(User client, int id);
+    boolean update(User client, long id);
 
     /**
      * Удаляет клиента с заданным ID
      * @param id - id клиента, которого нужно удалить
      * @return - true если клиент был удален, иначе false
      */
-    boolean delete(int id);
+    boolean delete(long id);
 }

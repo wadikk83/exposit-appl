@@ -18,17 +18,23 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-//@Entity
+@Entity
 @Table(name = "products")
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
     @Column(unique = true)
     private @NonNull String name;
-    //@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
-    //private List<Category> categories = new ArrayList();
+
+//    @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+//    @JoinTable(name = "product_category", joinColumns = { @JoinColumn(name = "person_id") }, inverseJoinColumns = {
+//            @JoinColumn(name = "adress_id"), @JoinColumn(name = "country") })
+//    private List<Category> categories = new ArrayList();
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     private List<ProductAttribute> productAttributes = new ArrayList<>();
+
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    private List<Article> articleList = new ArrayList<>();
 }

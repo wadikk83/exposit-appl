@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+
+    <changeSet id="100" author="wadikk">
+        <createTable tableName="order_status">
+            <column name="id" type="java.lang.Long" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="order_status_name" type="java.lang.Long"/>
+            <column name="timestamp" type="java.sql.Types.DATETIME"/>
+            <column name="order_id" type="java.lang.Long"/>
+            <column name="description" type="java.lang.String"/>
+        </createTable>
+        <addForeignKeyConstraint onDelete="CASCADE"
+                                 baseColumnNames="order_id"
+                                 baseTableName="order_status"
+                                 constraintName="fk_order_status->order"
+                                 referencedColumnNames="id"
+                                 referencedTableName="order"/>
+
+        <addForeignKeyConstraint onDelete="CASCADE"
+                                 baseColumnNames="order_status_name"
+                                 baseTableName="order_status"
+                                 constraintName="fk_order_status->order_status_name"
+                                 referencedColumnNames="id"
+                                 referencedTableName="order_status_name"/>
+    </changeSet>
+</databaseChangeLog>

@@ -19,14 +19,14 @@ import javax.persistence.*;
 public class ProductAttribute {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @ManyToOne()
     @JoinColumn(name = "attribute_name_id")
     private @NonNull AttributeName attributeName;
 
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "product_id")
-//    private @NonNull Product product;
+    @ManyToOne()
+    @JoinColumn(name = "product_id")
+    private Product product;
     private String value;
 }
