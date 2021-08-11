@@ -1,14 +1,50 @@
 package by.wadikk.core.service;
 
 import by.wadikk.core.model.Product;
+import by.wadikk.core.model.User;
 
 import java.util.List;
 
 public interface ProductService {
 
-    Product addProduct(Product product);
+    /**
+     * Создает новый продукт
+     *
+     * @param product - продукт для создания
+     */
+    boolean create(Product product);
 
-    Boolean deleteProduct(Product product);
+    /**
+     * Возвращает список всех имеющихся продуктов
+     *
+     * @return список продуктов
+     */
+    List<Product> readAll();
 
+    /**
+     * Возвращает продукт по его ID
+     *
+     * @param id - ID продукта
+     * @return - объект продукта с заданным ID
+     */
+    Product read(long id);
+
+    /**
+     * Обновляет продукт с заданным ID,
+     * в соответствии с переданным продуктом
+     *
+     * @param product - продукт в соответсвии с которым нужно обновить данные
+     * @param id     - id продукта которого нужно обновить
+     * @return - true если данные были обновлены, иначе false
+     */
+    boolean update(Product product, long id);
+
+    /**
+     * Удаляет продукт с заданным ID
+     *
+     * @param id - id продукта, которого нужно удалить
+     * @return - true если продукт был удален, иначе false
+     */
+    boolean delete(long id);
 
 }
