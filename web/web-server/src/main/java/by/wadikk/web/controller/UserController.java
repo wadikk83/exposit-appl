@@ -2,10 +2,14 @@ package by.wadikk.web.controller;
 
 import by.wadikk.core.model.User;
 import by.wadikk.core.service.UserService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.yaml.snakeyaml.events.Event;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -13,6 +17,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/users")
+@Tag(name = "Пользователи", description = "Взаимодействие с пользователями")
 public class UserController {
 
     private final UserService userService;
@@ -23,12 +28,16 @@ public class UserController {
     }
 
     @PostMapping(value = "")
+    @Operation(summary = "Создание нового пользователя",
+            description = "Позволяет создать нового пользователя")
     public ResponseEntity<?> create(@RequestBody @Valid User user) {
         userService.create(user);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @GetMapping(value = "")
+    @Operation(summary = "Получение всех пользователей",
+            description = "Позволяет получить список всех пользователей")
     public ResponseEntity<List<User>> read() {
         final List<User> clients = userService.readAll();
 
@@ -38,7 +47,10 @@ public class UserController {
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<User> read(@PathVariable(name = "id") long id) {
+    @Operation(summary = "Получение пользователя по ID",
+            description = "Позволяет получить пользователя по его ID")
+    public ResponseEntity<User> read(
+            @PathVariable(name = "id") @Parameter(description = "Идентификатор пользователя") long id) {
         final User user = userService.read(id);
 
         return user != null
@@ -47,7 +59,11 @@ public class UserController {
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<?> update(@PathVariable(name = "id") long id, @RequestBody @Valid User user) {
+    @Operation(summary = "Обновление пользователя по ID",
+            description = "Позволяет обновить пользователя по его ID")
+    public ResponseEntity<?> update(
+            @PathVariable(name = "id") @Parameter(description = "Идентификатор пользователя") long id,
+            @RequestBody @Valid User user) {
         final boolean updated = userService.update(user, id);
 
         return updated
@@ -56,7 +72,9 @@ public class UserController {
     }
 
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity<?> delete(@PathVariable(name = "id") long id) {
+    @Operation(summary = "Удаление пользователя")
+    public ResponseEntity<?> delete(
+            @PathVariable(name = "id") @Parameter(description = "Идентификатор пользователя") long id) {
         final boolean deleted = userService.delete(id);
 
         return deleted
@@ -65,7 +83,8 @@ public class UserController {
     }
 
     //// TODO: 07.08.2021 Created for test, can be deleted after 
-    @GetMapping(value ="/test")
+    @GetMapping(value = "/test")
+    @Operation(summary = "Тестовый метод")
     public ResponseEntity<?> test() {
         return new ResponseEntity<>("Test is ok", HttpStatus.OK);
     }

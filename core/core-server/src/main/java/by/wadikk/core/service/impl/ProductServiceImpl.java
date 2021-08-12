@@ -53,4 +53,20 @@ public class ProductServiceImpl implements ProductService {
         }
         return false;
     }
+
+    @Override
+    public List<Product> findByAttributes(Long attributeId) {
+        return productRepository.findProductsByProductAttributes(attributeId);
+    }
+
+    @Override
+    public List<Product> findByCategory(Long CategoryId) {
+        return null;
+    }
+
+    @Override
+    public List<Product> getAllByStoreId(Long storeId) {
+        //return productRepository.findProductsByArticlesByStore(storeId);
+        return null;
+    }
 }

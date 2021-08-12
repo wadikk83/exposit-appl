@@ -54,12 +54,15 @@
             <artifactId>hibernate-validator</artifactId>
         </dependency>
 
-        <!--            #Liquibase-->
-        <!--<dependency>
-            <groupId>org.liquibase</groupId>
-            <artifactId>liquibase-core</artifactId>
-            <version>${liquibase.version}</version>
-        </dependency>-->
+        <!--        Swagger-->
+        <dependency>
+            <groupId>io.swagger.core.v3</groupId>
+            <artifactId>swagger-annotations</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-ui</artifactId>
+        </dependency>
 
     </dependencies>
 

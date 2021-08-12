@@ -34,7 +34,7 @@ public interface ProductService {
      * в соответствии с переданным продуктом
      *
      * @param product - продукт в соответсвии с которым нужно обновить данные
-     * @param id     - id продукта которого нужно обновить
+     * @param id      - id продукта которого нужно обновить
      * @return - true если данные были обновлены, иначе false
      */
     boolean update(Product product, long id);
@@ -46,5 +46,29 @@ public interface ProductService {
      * @return - true если продукт был удален, иначе false
      */
     boolean delete(long id);
+
+    /**
+     * Ищет продукт по заданному атрибуту продукта
+     *
+     * @param attributeId -id атрибута
+     * @return - список продуктов
+     */
+    List<Product> findByAttributes(Long attributeId);
+
+    /**
+     * Ищет продукт по заданной категории продукта
+     *
+     * @param CategoryId -id атрибута
+     * @return - список продуктов
+     */
+    List<Product> findByCategory(Long CategoryId);
+
+    /**
+     * Возвращает список всех имеющихся продуктов в магазине
+     *
+     * @param storeId - id магазина
+     * @return - список продуктов в магазине
+     */
+    List<Product> getAllByStoreId(Long storeId);
 
 }
