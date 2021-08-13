@@ -1,5 +1,6 @@
 package by.wadikk.core.repository;
 
+import by.wadikk.core.model.Article;
 import by.wadikk.core.model.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -9,7 +10,6 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     List<Product> findProductsByProductAttributes(long attributeId);
 
-
-    //List<Product> findProductsByArticlesByStore(long storeID);
+    List<Product> findProductByArticleListIn(List<Article> articleList);
 
 }

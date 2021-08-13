@@ -2,6 +2,7 @@ package by.wadikk.web.controller;
 
 import by.wadikk.core.model.User;
 import by.wadikk.core.service.UserService;
+import io.swagger.v3.oas.annotations.Hidden;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -9,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.yaml.snakeyaml.events.Event;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -84,6 +84,7 @@ public class UserController {
 
     //// TODO: 07.08.2021 Created for test, can be deleted after 
     @GetMapping(value = "/test")
+    @Hidden
     @Operation(summary = "Тестовый метод")
     public ResponseEntity<?> test() {
         return new ResponseEntity<>("Test is ok", HttpStatus.OK);

@@ -56,7 +56,7 @@ public interface ProductService {
     List<Product> findByAttributes(Long attributeId);
 
     /**
-     * Ищет продукт по заданной категории продукта
+     * Ищет продукт по заданному атрибуту продукта
      *
      * @param CategoryId -id атрибута
      * @return - список продуктов

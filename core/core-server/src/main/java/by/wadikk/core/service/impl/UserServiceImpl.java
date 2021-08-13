@@ -3,6 +3,7 @@ package by.wadikk.core.service.impl;
 import by.wadikk.core.model.User;
 import by.wadikk.core.repository.UserRepository;
 import by.wadikk.core.service.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@Slf4j
 public class UserServiceImpl implements UserService {
 
     private UserRepository userRepository;
@@ -30,6 +32,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> readAll() {
+        log.debug("Read all user");
         return userRepository.findAll();
     }
 

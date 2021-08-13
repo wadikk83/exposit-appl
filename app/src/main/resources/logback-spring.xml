@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <configuration>
-    <include resource="org/springframework/boot/logging/logback/base.xml"/>
     <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
-
-    <!--<property name="LOG_FILE" value="${LOG_FILE:-${LOG_PATH:-${LOG_TEMP:-${java.io.tmpdir:-/tmp}}/}spring.log}"/>-->
-
-    <property name="LOG_FILE" value="d:/logback/spring.log" />
+    <property name="LOG_FILE" value="${LOG_FILE:-${LOG_PATH:-${LOG_TEMP:-${java.io.tmpdir:-/tmp}}/}spring.log}"/>
 
     <springProfile name="dev">
         <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
@@ -20,13 +15,11 @@
                 <fileNamePattern>${LOG_FILE}.%d{yyyy-MM-dd}.log</fileNamePattern>
             </rollingPolicy>
         </appender>
-
         <root level="DEBUG">
             <appender-ref ref="CONSOLE"/>
             <appender-ref ref="ROLLING-FILE"/>
         </root>
     </springProfile>
-
 
     <springProfile name="prod">
         <appender name="ROLLING-FILE"

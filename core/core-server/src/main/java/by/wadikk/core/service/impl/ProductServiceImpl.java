@@ -1,20 +1,25 @@
 package by.wadikk.core.service.impl;
 
+import by.wadikk.core.model.Article;
 import by.wadikk.core.model.Product;
+import by.wadikk.core.repository.ArticleRepository;
 import by.wadikk.core.repository.ProductRepository;
 import by.wadikk.core.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class ProductServiceImpl implements ProductService {
     private final ProductRepository productRepository;
+    private final ArticleRepository articleRepository;
 
     @Autowired
-    public ProductServiceImpl(ProductRepository productRepository) {
+    public ProductServiceImpl(ProductRepository productRepository, ArticleRepository articleRepository) {
         this.productRepository = productRepository;
+        this.articleRepository = articleRepository;
     }
 
     @Override
@@ -66,7 +71,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<Product> getAllByStoreId(Long storeId) {
-        //return productRepository.findProductsByArticlesByStore(storeId);
-        return null;
+        List<Article> articleList = articleRepository.findArticleByStore(storeId);
+        return productRepository.findProductByArticleListIn(articleList);
     }
 }
