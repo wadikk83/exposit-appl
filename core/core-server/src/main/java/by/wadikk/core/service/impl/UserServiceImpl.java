@@ -32,7 +32,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> readAll() {
-        log.debug("Read all user");
         return userRepository.findAll();
     }
 
