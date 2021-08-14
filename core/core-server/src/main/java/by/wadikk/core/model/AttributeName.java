@@ -1,5 +1,6 @@
 package by.wadikk.core.model;
 
+import by.wadikk.core.listeners.AuditListener;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,6 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@EntityListeners(AuditListener.class)
 public class AttributeName {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
