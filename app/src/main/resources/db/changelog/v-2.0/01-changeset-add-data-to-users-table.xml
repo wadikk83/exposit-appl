@@ -13,5 +13,12 @@
             <column name="login">admin</column>
             <column name="password">password</column>
         </insert>
+        <insert tableName="users">
+            <column name="full_name">user2</column>
+            <column name="address">user2 admin</column>
+            <column name="email">user@tut.by</column>
+            <column name="login">user</column>
+            <column name="password">user</column>
+        </insert>
     </changeSet>
 </databaseChangeLog>

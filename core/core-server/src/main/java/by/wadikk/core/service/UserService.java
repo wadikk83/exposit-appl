@@ -1,7 +1,6 @@
 package by.wadikk.core.service;
 
 import by.wadikk.core.model.User;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
@@ -26,7 +25,7 @@ public interface UserService {
      * @param id - ID клиента
      * @return - объект клиента с заданным ID
      */
-    User read(long id);
+    Optional<User> findById(long id);
 
     /**
      * Обновляет клиента с заданным ID,
@@ -35,7 +34,7 @@ public interface UserService {
      * @param id - id клиента которого нужно обновить
      * @return - true если данные были обновлены, иначе false
      */
-    boolean update(User client, long id);
+    User update(User client, long id);
 
     /**
      * Удаляет клиента с заданным ID

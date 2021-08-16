@@ -11,7 +11,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.EntityNotFoundException;
 import javax.validation.Valid;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import java.util.List;
 
 
@@ -49,9 +52,11 @@ public class UserController {
     @GetMapping(value = "/{id}")
     @Operation(summary = "Получение пользователя по ID",
             description = "Позволяет получить пользователя по его ID")
-    public ResponseEntity<User> read(
-            @PathVariable(name = "id") @Parameter(description = "Идентификатор пользователя") long id) {
-        final User user = userService.read(id);
+    public ResponseEntity<User> getUser(
+            @PathVariable(name = "id") @Min(1) @Max(Long.MAX_VALUE)
+            @Parameter(description = "Идентификатор пользователя") long id) {
+        final User user = userService.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Entity is not found, id=" + id));
 
         return user != null
                 ? new ResponseEntity<>(user, HttpStatus.OK)
@@ -61,20 +66,23 @@ public class UserController {
     @PutMapping(value = "/{id}")
     @Operation(summary = "Обновление пользователя по ID",
             description = "Позволяет обновить пользователя по его ID")
-    public ResponseEntity<?> update(
-            @PathVariable(name = "id") @Parameter(description = "Идентификатор пользователя") long id,
+    public User update(
+            @PathVariable(name = "id") @Min(1) @Max(Long.MAX_VALUE)
+            @Parameter(description = "Идентификатор пользователя") long id,
             @RequestBody @Valid User user) {
-        final boolean updated = userService.update(user, id);
+        /*final boolean updated = userService.update(user, id);
 
         return updated
                 ? new ResponseEntity<>(HttpStatus.OK)
-                : new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
+                : new ResponseEntity<>(HttpStatus.NOT_MODIFIED);*/
+        return userService.update(user, id);
     }
 
     @DeleteMapping(value = "/{id}")
     @Operation(summary = "Удаление пользователя")
     public ResponseEntity<?> delete(
-            @PathVariable(name = "id") @Parameter(description = "Идентификатор пользователя") long id) {
+            @PathVariable(name = "id") @Min(1) @Max(Long.MAX_VALUE)
+            @Parameter(description = "Идентификатор пользователя") long id) {
         final boolean deleted = userService.delete(id);
 
         return deleted
