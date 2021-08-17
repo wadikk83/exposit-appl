@@ -1,6 +1,5 @@
 package by.wadikk.core.model;
 
-import by.wadikk.core.listeners.AuditListener;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

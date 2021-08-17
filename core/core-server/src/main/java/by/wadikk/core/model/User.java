@@ -1,13 +1,10 @@
 package by.wadikk.core.model;
 
-import by.wadikk.core.listeners.AuditListener;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.jpa.domain.AbstractAuditable;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -24,7 +21,7 @@ import javax.validation.constraints.Email;
 @Entity
 @Table(name = "users")
 @Schema(description = "Сущность пользователя")
-@EntityListeners(AuditListener.class)
+
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
