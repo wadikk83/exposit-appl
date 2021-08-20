@@ -12,6 +12,7 @@
         <module>app</module>
         <module>core</module>
         <module>web</module>
+        <module>persistence</module>
     </modules>
 
     <parent>
@@ -41,16 +42,51 @@
         <liquibase.version>4.4.2</liquibase.version>
         <swagger-annotations.version>2.1.10</swagger-annotations.version>
         <springdoc-openapi-ui.version>1.5.10</springdoc-openapi-ui.version>
+
+        <web.version>1.0-SNAPSHOT</web.version>
+        <core.version>1.0-SNAPSHOT</core.version>
+        <persistence.version>1.0-SNAPSHOT</persistence.version>
     </properties>
+
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <logger-level>debug</logger-level>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <id>prod</id>
+            <properties>
+                <logger-level>info</logger-level>
+            </properties>
+        </profile>
+    </profiles>
 
     <dependencyManagement>
         <dependencies>
+
             <dependency>
-                <groupId>org.projectlombok</groupId>
-                <artifactId>lombok</artifactId>
-                <version>${lombok.version}</version>
-                <scope>provided</scope>
+                <groupId>by.wadikk</groupId>
+                <artifactId>persistence</artifactId>
+                <version>${persistence.version}</version>
             </dependency>
+
+            <dependency>
+                <groupId>by.wadikk</groupId>
+                <artifactId>core</artifactId>
+                <version>${core.version}}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>by.wadikk</groupId>
+                <artifactId>web</artifactId>
+                <version>${web.version}</version>
+            </dependency>
+
 
             <!--            #Database-->
             <dependency>
@@ -90,11 +126,11 @@
                 <version>${liquibase.version}</version>
             </dependency>
 
-            <dependency>
+            <!--<dependency>
                 <groupId>javax.xml.bind</groupId>
                 <artifactId>jaxb-api</artifactId>
                 <version>2.3.0</version>
-            </dependency>
+            </dependency>-->
 
             <!--            Swagger-->
             <dependency>
@@ -102,12 +138,15 @@
                 <artifactId>swagger-annotations</artifactId>
                 <version>${swagger-annotations.version}</version>
             </dependency>
+
             <dependency>
                 <groupId>org.springdoc</groupId>
                 <artifactId>springdoc-openapi-ui</artifactId>
                 <version>${springdoc-openapi-ui.version}</version>
             </dependency>
+
         </dependencies>
+
     </dependencyManagement>
 
     <build>

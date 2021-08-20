@@ -1,21 +1,10 @@
 package by.wadikk.web.controller;
 
-import by.wadikk.core.model.User;
 import by.wadikk.core.service.UserService;
-import io.swagger.v3.oas.annotations.Hidden;
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-import javax.persistence.EntityNotFoundException;
-import javax.validation.Valid;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import java.util.List;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
@@ -30,7 +19,7 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping(value = "")
+   /* @PostMapping(value = "")
     @Operation(summary = "Создание нового пользователя",
             description = "Позволяет создать нового пользователя")
     public ResponseEntity<?> create(@RequestBody @Valid User user) {
@@ -70,11 +59,11 @@ public class UserController {
             @PathVariable(name = "id") @Min(1) @Max(Long.MAX_VALUE)
             @Parameter(description = "Идентификатор пользователя") long id,
             @RequestBody @Valid User user) {
-        /*final boolean updated = userService.update(user, id);
+        *//*final boolean updated = userService.update(user, id);
 
         return updated
                 ? new ResponseEntity<>(HttpStatus.OK)
-                : new ResponseEntity<>(HttpStatus.NOT_MODIFIED);*/
+                : new ResponseEntity<>(HttpStatus.NOT_MODIFIED);*//*
         return userService.update(user, id);
     }
 
@@ -96,5 +85,5 @@ public class UserController {
     @Operation(summary = "Тестовый метод")
     public ResponseEntity<?> test() {
         return new ResponseEntity<>("Test is ok", HttpStatus.OK);
-    }
+    }*/
 }

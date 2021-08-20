@@ -1,0 +1,9 @@
+{
+  "properties": [
+    {
+      "name": "datasource.file.format",
+      "type": "java.lang.String",
+      "description": "Description for datasource.file.format."
+    }
+  ]
+}

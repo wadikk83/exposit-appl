@@ -52,7 +52,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     @Override
     protected ResponseEntity<Object> handleNoHandlerFoundException(NoHandlerFoundException ex, HttpHeaders headers,
                                                                    HttpStatus status, WebRequest request) {
-        return new ResponseEntity<Object>(new ApiError("No Handler Found", ex.getMessage()), status);
+        return new ResponseEntity<Object>(new ApiError("No Handler Found", ex.toString()), status);
     }
 
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)

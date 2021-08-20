@@ -1,13 +1,8 @@
 package by.wadikk.core.service;
 
-import by.wadikk.core.model.Article;
-import by.wadikk.core.model.AttributeName;
-
-import java.util.List;
-
 public interface ArticleService {
 
-    boolean create(Article article);
+   /* boolean create(Article article);
 
     List<Article> readAll();
 
@@ -15,5 +10,5 @@ public interface ArticleService {
 
     boolean update(Article article, long id);
 
-    boolean delete(long id);
+    boolean delete(long id);*/
 }
