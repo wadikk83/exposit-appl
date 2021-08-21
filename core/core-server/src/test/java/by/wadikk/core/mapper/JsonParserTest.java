@@ -19,9 +19,9 @@ class JsonParserTest {
         userList.add(user2);
         //Parser<User> parser = new ParserFactory().getParser();
         Parser<User> parser = new JsonParser<>();
-        parser.write(User.class, userList);
+        parser.write("UserDao", userList);
 
-        List<User> userListUp = parser.read(User.class);
+        List<User> userListUp = parser.read("UserDao");
 
         Assert.notEmpty(userListUp);
     }

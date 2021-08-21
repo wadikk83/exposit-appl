@@ -4,7 +4,8 @@ import java.util.List;
 
 public interface Parser<T> {
 
-    void write(Class clazz, List<T> list);
+    void write(String className, List<T> list);
 
-    List<T> read(Class clazz);
+    List<T> read(String className);
+
 }

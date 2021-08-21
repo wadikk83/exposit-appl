@@ -1,17 +1,18 @@
-package by.wadikk.core.mapper;
+package by.wadikk.core.dao;
 
+import by.wadikk.core.mapper.JsonParser;
+import by.wadikk.core.mapper.Parser;
 import by.wadikk.persistence.entities.User;
+import org.junit.jupiter.api.Test;
 import org.springframework.util.Assert;
 
-import javax.validation.constraints.AssertTrue;
 import java.util.ArrayList;
 import java.util.List;
 
-class XmlParserTest {
+class UserDaoTest {
 
-    @org.junit.jupiter.api.Test
-    void write() {
-
+    @Test
+    void abstractTest() {
         User user1 = new User("user1", "user1", "user1full", "user1@qqq.by", "user1adress");
         User user2 = new User("user2", "user2", "user2full", "user2@qqq.by", "user2adress");
 
@@ -19,11 +20,13 @@ class XmlParserTest {
         userList.add(user1);
         userList.add(user2);
         //Parser<User> parser = new ParserFactory().getParser();
-        Parser<User> parser = new XmlParser<>();
+        Parser<User> parser = new JsonParser<>();
         parser.write("UserDao", userList);
 
-        List<User> userListUp = parser.read("UserDao");
+        /*UserDao userDao = new UserDao();
+        List<User> list1 = userDao.getAll();
+        System.out.println(userDao.getAll());*/
 
-        Assert.notEmpty(userListUp);
     }
+
 }

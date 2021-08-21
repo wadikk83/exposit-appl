@@ -4,14 +4,14 @@ package by.wadikk.core.service.common;
 import by.wadikk.persistence.base.ErrorType;
 import by.wadikk.persistence.entities.BaseEntity;
 import by.wadikk.persistence.exception.SampleException;
-import by.wadikk.persistence.repository.CommonRepository;
+import by.wadikk.persistence.repository.common.CommonRepository;
 import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 import java.util.Optional;
 
-public abstract class AbstractService<E extends BaseEntity, R extends CommonRepository<E>>
+public abstract class AbstractService<E extends BaseEntity>
         implements CommonService<E> {
 
     private final R repository;

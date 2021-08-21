@@ -18,8 +18,8 @@ public class XmlParser<T> implements Parser<T> {
     private String fileDirectory;
 
     @SneakyThrows
-    public void write(@NonNull Class clazz, List<T> list) {
-        String fileName = clazz.getSimpleName() + ".xml";
+    public void write(@NonNull String className, List<T> list) {
+        String fileName = className + ".xml";
 
         // TODO: 21.08.2021 заглушка
 
@@ -32,8 +32,8 @@ public class XmlParser<T> implements Parser<T> {
         log.info("List has been loaded to {}", fileDirectory + fileName);
     }
 
-    public List<T> read(@NonNull Class clazz) {
-        String fileName = clazz.getSimpleName() + ".xml";
+    public List<T> read(@NonNull String className) {
+        String fileName = className + ".xml";
 
         XMLDecoder decoder = null;
         try {

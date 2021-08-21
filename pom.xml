@@ -28,9 +28,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <lombok.version>1.18.20</lombok.version>
         <junit.version>5.1.0</junit.version>
-        <jackson.version>2.9.6</jackson.version>
-        <jaxb.version>2.3.1</jaxb.version>
-        <jaxb-core.version>2.3.0.1</jaxb-core.version>
+        <jackson.version>2.12.4</jackson.version>
         <!--logging-->
         <logback.version>1.2.5</logback.version>
         <slf4j.version>1.7.31</slf4j.version>
@@ -42,6 +40,9 @@
         <liquibase.version>4.4.2</liquibase.version>
         <swagger-annotations.version>2.1.10</swagger-annotations.version>
         <springdoc-openapi-ui.version>1.5.10</springdoc-openapi-ui.version>
+
+        <spring.configuration.processor.version>2.5.4</spring.configuration.processor.version>
+
 
         <web.version>1.0-SNAPSHOT</web.version>
         <core.version>1.0-SNAPSHOT</core.version>
@@ -68,6 +69,18 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-configuration-processor</artifactId>
+                <optional>true</optional>
+                <version>${spring.configuration.processor.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
 
             <dependency>
                 <groupId>by.wadikk</groupId>
@@ -125,12 +138,6 @@
                 <artifactId>liquibase-core</artifactId>
                 <version>${liquibase.version}</version>
             </dependency>
-
-            <!--<dependency>
-                <groupId>javax.xml.bind</groupId>
-                <artifactId>jaxb-api</artifactId>
-                <version>2.3.0</version>
-            </dependency>-->
 
             <!--            Swagger-->
             <dependency>
