@@ -2,28 +2,27 @@ package by.wadikk.core.service.common;
 
 
 import by.wadikk.persistence.base.ErrorType;
+import by.wadikk.persistence.common.CommonRepositoryRepository;
 import by.wadikk.persistence.entities.BaseEntity;
 import by.wadikk.persistence.exception.SampleException;
-import by.wadikk.persistence.repository.common.CommonRepository;
 import com.google.common.collect.Lists;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 import java.util.Optional;
 
 public abstract class AbstractService<E extends BaseEntity>
-        implements CommonService<E> {
+        {
 
-    private final R repository;
+   /* private final CommonRepositoryRepository repository;
 
-    @Autowired
-    public AbstractService(R repository) {
+
+    public AbstractService(CommonRepositoryRepository repository) {
         this.repository = repository;
     }
 
     @Override
     public Optional<E> save(E entity) {
-        return Optional.of(repository.save(entity));
+        return (Optional<E>) repository.save(entity);
     }
 
     @Override
@@ -33,11 +32,11 @@ public abstract class AbstractService<E extends BaseEntity>
 
     @Override
     public Optional<E> update(E entity) {
-        return Optional.of(repository.save(entity));
+        return (Optional<E>) repository.save(entity);
     }
 
     @Override
-    public Optional<E> get(Long id) {
+    public Optional<E> getById(Long id) {
         return repository.findById(id);
     }
 
@@ -48,7 +47,7 @@ public abstract class AbstractService<E extends BaseEntity>
 
     @Override
     public Boolean deleteById(Long id) {
-        E entity = get(id)
+        E entity = getById(id)
                 .orElseThrow(() -> new SampleException(String.format(ErrorType.ENTITY_NOT_FOUND.getDescription(), id)));
         repository.delete(entity);
         return !repository.findById(entity.getId()).isPresent();
@@ -58,6 +57,6 @@ public abstract class AbstractService<E extends BaseEntity>
     public Boolean deleteAll() {
         repository.deleteAll();
         return Lists.newArrayList(repository.findAll()).isEmpty();
-    }
+    }*/
 }
 

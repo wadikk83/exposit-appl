@@ -9,8 +9,8 @@ import javax.persistence.*;
 
 @Data
 @MappedSuperclass
-@ToString
-@EqualsAndHashCode
+
+
 public abstract class BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

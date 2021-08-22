@@ -1,9 +1,10 @@
 package by.wadikk.core.mapper;
 
 import by.wadikk.persistence.entities.User;
+import by.wadikk.persistence.mapper.Parser;
+import by.wadikk.persistence.mapper.XmlParser;
 import org.springframework.util.Assert;
 
-import javax.validation.constraints.AssertTrue;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,9 +21,9 @@ class XmlParserTest {
         userList.add(user2);
         //Parser<User> parser = new ParserFactory().getParser();
         Parser<User> parser = new XmlParser<>();
-        parser.write("UserDao", userList);
+        parser.write("UserRepositoryDao", userList);
 
-        List<User> userListUp = parser.read("UserDao");
+        List<User> userListUp = parser.read("UserRepositoryDao");
 
         Assert.notEmpty(userListUp);
     }

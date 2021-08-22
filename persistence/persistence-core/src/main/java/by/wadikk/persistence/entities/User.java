@@ -21,7 +21,6 @@ import javax.validation.constraints.Email;
 @Entity
 @Table(name = "users")
 @Schema(description = "Сущность пользователя")
-
 public class User extends BaseEntity {
 
     @Column(unique = true)

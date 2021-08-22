@@ -1,1 +1,2 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=by.wadikk.persistence.PersistenceConfiguration
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+by.wadikk.persistence.PersistenceConfiguration,by.wadikk.persistence.LiquibaseConfigurer

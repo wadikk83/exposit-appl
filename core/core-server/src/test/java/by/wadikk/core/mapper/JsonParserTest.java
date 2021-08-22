@@ -1,6 +1,8 @@
 package by.wadikk.core.mapper;
 
 import by.wadikk.persistence.entities.User;
+import by.wadikk.persistence.mapper.JsonParser;
+import by.wadikk.persistence.mapper.Parser;
 import org.junit.jupiter.api.Test;
 import org.springframework.util.Assert;
 
@@ -19,9 +21,9 @@ class JsonParserTest {
         userList.add(user2);
         //Parser<User> parser = new ParserFactory().getParser();
         Parser<User> parser = new JsonParser<>();
-        parser.write("UserDao", userList);
+        parser.write("UserRepositoryDao", userList);
 
-        List<User> userListUp = parser.read("UserDao");
+        List<User> userListUp = parser.read("UserRepositoryDao");
 
         Assert.notEmpty(userListUp);
     }

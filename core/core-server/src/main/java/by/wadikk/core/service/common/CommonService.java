@@ -11,9 +11,9 @@ public interface CommonService<E extends BaseEntity> {
 
     List<E> saveAll(List<E> entities);
 
-    Optional<E> update(E entity);
+    Optional<E> update(E entity, Long id);
 
-    Optional<E> get(Long id);
+    Optional<E> getById(Long id);
 
     List<E> getAll();
 

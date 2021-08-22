@@ -38,8 +38,11 @@
         <hibernate.version>5.5.5.Final</hibernate.version>
         <hibernate-validator.version>7.0.1.Final</hibernate-validator.version>
         <liquibase.version>4.4.2</liquibase.version>
-        <swagger-annotations.version>2.1.10</swagger-annotations.version>
+
+        <swagger.version>2.1.10</swagger.version>
         <springdoc-openapi-ui.version>1.5.10</springdoc-openapi-ui.version>
+
+        <servlet.api.version>4.0.1</servlet.api.version>
 
         <spring.configuration.processor.version>2.5.4</spring.configuration.processor.version>
 
@@ -143,13 +146,25 @@
             <dependency>
                 <groupId>io.swagger.core.v3</groupId>
                 <artifactId>swagger-annotations</artifactId>
-                <version>${swagger-annotations.version}</version>
+                <version>${swagger.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.swagger.core.v3</groupId>
+                <artifactId>swagger-models</artifactId>
+                <version>${swagger.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>org.springdoc</groupId>
                 <artifactId>springdoc-openapi-ui</artifactId>
                 <version>${springdoc-openapi-ui.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>javax.servlet-api</artifactId>
+                <version>${servlet.api.version}</version>
             </dependency>
 
         </dependencies>
