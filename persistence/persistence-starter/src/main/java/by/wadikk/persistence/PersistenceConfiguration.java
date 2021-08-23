@@ -1,8 +1,10 @@
 package by.wadikk.persistence;
 
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -17,6 +19,7 @@ import javax.annotation.Resource;
 import javax.sql.DataSource;
 
 @Configuration
+@EnableConfigurationProperties
 @ComponentScan
 @EnableJpaRepositories
 @EntityScan
@@ -28,6 +31,9 @@ public class PersistenceConfiguration {
     public static final String USER_CLASS_NAME = "UserDao";
     public static final String PRODUCT_CLASS_NAME = "ProductDao";
     public static final String CATEGORY_CLASS_NAME = "CategoryDao";
+
+    public static String fileDirectory;
+    public static String datasourceFileFormat;
 
     @Resource
     public Environment environment;
@@ -44,6 +50,9 @@ public class PersistenceConfiguration {
         dataSource.setUrl(environment.getRequiredProperty("spring.datasource.url"));
         dataSource.setUsername(environment.getRequiredProperty("spring.datasource.username"));
         dataSource.setPassword(environment.getRequiredProperty("spring.datasource.password"));
+
+        fileDirectory = environment.getRequiredProperty("datasource.file.directory");
+        datasourceFileFormat = environment.getRequiredProperty("datasource.file.format");
         return dataSource;
     }
 

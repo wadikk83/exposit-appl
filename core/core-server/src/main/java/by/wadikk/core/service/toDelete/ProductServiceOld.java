@@ -1,6 +1,6 @@
 package by.wadikk.core.service.toDelete;
 
-public interface ProductService {
+public interface ProductServiceOld {
 
     /**
      * Создает новый продукт

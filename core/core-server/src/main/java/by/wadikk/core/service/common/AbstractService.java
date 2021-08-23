@@ -1,22 +1,15 @@
 package by.wadikk.core.service.common;
 
 
-import by.wadikk.persistence.base.ErrorType;
-import by.wadikk.persistence.common.CommonRepositoryRepository;
 import by.wadikk.persistence.entities.BaseEntity;
-import by.wadikk.persistence.exception.SampleException;
-import com.google.common.collect.Lists;
-
-import java.util.List;
-import java.util.Optional;
 
 public abstract class AbstractService<E extends BaseEntity>
         {
 
-   /* private final CommonRepositoryRepository repository;
+   /* private final CommonRepository repository;
 
 
-    public AbstractService(CommonRepositoryRepository repository) {
+    public AbstractService(CommonRepository repository) {
         this.repository = repository;
     }
 

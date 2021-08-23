@@ -2,6 +2,7 @@ package by.wadikk.persistence.dao.common;
 
 
 import by.wadikk.persistence.entities.BaseEntity;
+import by.wadikk.persistence.mapper.JsonParser;
 import by.wadikk.persistence.mapper.Parser;
 import by.wadikk.persistence.mapper.ParserFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,7 @@ public class AbstractRepositoryDao<E extends BaseEntity> implements CommonReposi
 
         this.entityFilename = entityFilename;
 
+        parser = new JsonParser<>();
 
         // TODO: 23.08.2021 Заглушка
         //parser = new ParserFactory().getParser();

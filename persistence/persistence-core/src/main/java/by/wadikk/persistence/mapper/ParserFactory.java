@@ -1,18 +1,15 @@
 package by.wadikk.persistence.mapper;
 
+import by.wadikk.persistence.PersistenceConfiguration;
 import by.wadikk.persistence.exception.FileFormatException;
-import org.springframework.beans.factory.annotation.Value;
 
 
 public class ParserFactory {
 
-    @Value("${datasource.file.format}")
-    private String fileFormatParser;
+    //    @Value("${datasource.file.format}")
+    private String fileFormatParser = PersistenceConfiguration.datasourceFileFormat;
 
     public Parser getParser() {
-
-        //fileFormatParser = new Properties().getProperty("datasource.file.format");
-
         switch (fileFormatParser) {
             case "XML":
                 return new XmlParser();

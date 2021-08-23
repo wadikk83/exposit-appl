@@ -6,5 +6,5 @@ import by.wadikk.persistence.entities.BaseEntity;
 import org.springframework.data.repository.NoRepositoryBean;
 
 @NoRepositoryBean
-public interface CommonRepositoryRepository<E extends BaseEntity> extends CommonRepositoryDao<E> {
+public interface CommonRepository<E extends BaseEntity> extends CommonRepositoryDao<E> {
 }
