@@ -45,7 +45,8 @@
         <servlet.api.version>4.0.1</servlet.api.version>
 
         <spring.configuration.processor.version>2.5.4</spring.configuration.processor.version>
-
+        <spring.aspect.version>5.3.9</spring.aspect.version>
+        <cloud.config.version>3.0.4</cloud.config.version>
 
         <web.version>1.0-SNAPSHOT</web.version>
         <core.version>1.0-SNAPSHOT</core.version>
@@ -72,6 +73,13 @@
 
     <dependencyManagement>
         <dependencies>
+
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+            </dependency>
+
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-configuration-processor</artifactId>
@@ -167,6 +175,19 @@
                 <version>${servlet.api.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-aspects</artifactId>
+                <version>${spring.aspect.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-config-server</artifactId>
+                <version>${cloud.config.version}</version>
+            </dependency>
+
+
         </dependencies>
 
     </dependencyManagement>
@@ -174,6 +195,19 @@
     <build>
         <pluginManagement>
             <plugins>
+
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <version>1.5.1.RELEASE</version>
+                    <configuration>
+                        <profiles>
+                            <profile>dev</profile>
+                            <profile>prod</profile>
+                        </profiles>
+                    </configuration>
+                </plugin>
+
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
@@ -187,10 +221,16 @@
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
                 </plugin>
-
-
             </plugins>
         </pluginManagement>
+
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+
     </build>
 
 </project>

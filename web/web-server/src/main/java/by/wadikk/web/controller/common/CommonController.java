@@ -1,5 +1,6 @@
 package by.wadikk.web.controller.common;
 
+import by.wadikk.core.annotation.ProfileExecution;
 import by.wadikk.persistence.entities.BaseEntity;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -20,6 +21,7 @@ public interface CommonController<E extends BaseEntity> {
     public ResponseEntity<?> create(@RequestBody @Valid E entity);
 
     @GetMapping(value = "")
+
     @Operation(summary = "Получение всех сущностей",
             description = "Позволяет получить список всех сущностей")
     public ResponseEntity<List<E>> getAll();

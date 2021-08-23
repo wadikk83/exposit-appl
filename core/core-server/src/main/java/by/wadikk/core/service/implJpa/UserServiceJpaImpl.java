@@ -1,5 +1,6 @@
 package by.wadikk.core.service.implJpa;
 
+import by.wadikk.core.annotation.ProfileExecution;
 import by.wadikk.core.service.UserService;
 import by.wadikk.persistence.base.ErrorType;
 import by.wadikk.persistence.entities.User;
@@ -42,6 +43,7 @@ public class UserServiceJpaImpl implements UserService {
     }
 
     @Override
+    @ProfileExecution
     public List<User> getAll() {
         return userRepository.findAll();
     }

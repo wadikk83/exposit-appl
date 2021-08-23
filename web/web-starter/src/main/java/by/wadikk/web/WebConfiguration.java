@@ -8,4 +8,5 @@ import org.springframework.context.annotation.Configuration;
 @ConditionalOnClass
 @ComponentScan
 public class WebConfiguration {
+
 }

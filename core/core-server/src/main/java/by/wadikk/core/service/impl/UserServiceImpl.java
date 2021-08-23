@@ -1,5 +1,6 @@
 package by.wadikk.core.service.impl;
 
+import by.wadikk.core.annotation.ProfileExecution;
 import by.wadikk.core.service.UserService;
 import by.wadikk.persistence.dao.UserRepositoryDao;
 import by.wadikk.persistence.entities.User;
@@ -22,6 +23,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+
     public List<User> saveAll(List<User> entities) {
         for (User user : entities) {
             save(user);
@@ -41,6 +43,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @ProfileExecution
     public List<User> getAll() {
         return userRepository.getAll();
     }
