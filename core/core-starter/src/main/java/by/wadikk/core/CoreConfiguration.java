@@ -1,11 +1,16 @@
 package by.wadikk.core;
 
 import by.wadikk.core.aspect.ProfileExecutionAspect;
+import by.wadikk.core.repositoryDTO.ProductRepositoryDAO;
+import by.wadikk.core.repositoryDTO.UserRepositoryDAO;
+import by.wadikk.core.repositoryJPA.ProductRepositoryJpa;
+import by.wadikk.core.repositoryJPA.UserRepositoryJpa;
+import by.wadikk.core.service.ProductService;
 import by.wadikk.core.service.UserService;
-import by.wadikk.core.service.impl.UserServiceImpl;
-import by.wadikk.core.service.implJpa.UserServiceJpaImpl;
-import by.wadikk.persistence.dao.UserRepositoryDao;
-import by.wadikk.persistence.repository.UserRepository;
+import by.wadikk.core.service.implDAO.ProductServiceImplDAO;
+import by.wadikk.core.service.implDAO.UserServiceImplDAO;
+import by.wadikk.core.service.implJpa.ProductServiceImplJPA;
+import by.wadikk.core.service.implJpa.UserServiceImplJPA;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
@@ -31,10 +36,17 @@ public class CoreConfiguration {
     private Environment environment;
 
     @Bean
-    public UserService userService(UserRepository userRepositoryJpa, UserRepositoryDao userRepositoryDao) {
+    public UserService userService(UserRepositoryJpa userRepositoryJpa, UserRepositoryDAO userRepositoryDAO) {
         if (datasourceTypeJPA.equals("true")) {
-            return new UserServiceJpaImpl(userRepositoryJpa);
-        } else return new UserServiceImpl(userRepositoryDao);
+            return new UserServiceImplJPA(userRepositoryJpa);
+        } else return new UserServiceImplDAO(userRepositoryDAO);
+    }
+
+    @Bean
+    public ProductService productService(ProductRepositoryJpa productRepositoryJpa, ProductRepositoryDAO productRepositoryDAO) {
+        if (datasourceTypeJPA.equals("true")) {
+            return new ProductServiceImplJPA(productRepositoryJpa);
+        } else return new ProductServiceImplDAO(productRepositoryDAO);
     }
 
 //    @Bean

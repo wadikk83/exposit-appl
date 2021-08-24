@@ -3,10 +3,9 @@ package by.wadikk.core.service.common;
 
 import by.wadikk.persistence.entities.BaseEntity;
 
-public abstract class AbstractService<E extends BaseEntity>
-        {
+public abstract class AbstractService<E extends BaseEntity> {
 
-   /* private final CommonRepository repository;
+    /*private final CommonRepository repository;
 
 
     public AbstractService(CommonRepository repository) {

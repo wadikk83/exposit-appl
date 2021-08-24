@@ -1,8 +1,8 @@
 package by.wadikk.core.mapper;
 
 import by.wadikk.persistence.entities.User;
-import by.wadikk.persistence.mapper.JsonParser;
-import by.wadikk.persistence.mapper.Parser;
+import by.wadikk.persistence.parser.JsonParser;
+import by.wadikk.persistence.parser.Parser;
 import org.junit.jupiter.api.Test;
 import org.springframework.util.Assert;
 

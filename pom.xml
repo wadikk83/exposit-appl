@@ -47,6 +47,7 @@
         <spring.configuration.processor.version>2.5.4</spring.configuration.processor.version>
         <spring.aspect.version>5.3.9</spring.aspect.version>
         <cloud.config.version>3.0.4</cloud.config.version>
+        <modelmapper.version>2.4.4</modelmapper.version>
 
         <web.version>1.0-SNAPSHOT</web.version>
         <core.version>1.0-SNAPSHOT</core.version>
@@ -187,6 +188,11 @@
                 <version>${cloud.config.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>org.modelmapper</groupId>
+                <artifactId>modelmapper</artifactId>
+                <version>${modelmapper.version}</version>
+            </dependency>
 
         </dependencies>
 
@@ -199,7 +205,6 @@
                 <plugin>
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
-                    <version>1.5.1.RELEASE</version>
                     <configuration>
                         <profiles>
                             <profile>dev</profile>
@@ -215,11 +220,6 @@
                         <source>${maven.compiler.source}</source>
                         <target>${maven.compiler.target}</target>
                     </configuration>
-                </plugin>
-
-                <plugin>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-maven-plugin</artifactId>
                 </plugin>
             </plugins>
         </pluginManagement>

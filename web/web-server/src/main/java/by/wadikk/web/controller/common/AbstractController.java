@@ -24,7 +24,6 @@ public abstract class AbstractController<E extends BaseEntity, S extends CommonS
         this.service = service;
     }
 
-
     @Override
     public ResponseEntity<?> create(E entity) {
         service.save(entity);
