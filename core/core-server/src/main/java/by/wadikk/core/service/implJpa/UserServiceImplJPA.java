@@ -8,12 +8,14 @@ import by.wadikk.persistence.entities.User;
 import by.wadikk.persistence.exception.SampleException;
 import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@Primary
 public class UserServiceImplJPA implements UserService {
 
     private final UserRepositoryJpa userRepository;

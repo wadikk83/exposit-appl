@@ -19,11 +19,13 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.core.env.Environment;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @Configuration
-@ComponentScan
+@ComponentScan(basePackages = {"by.wadikk.core"})
 @ConditionalOnClass
 @EnableAspectJAutoProxy
+@EnableJpaRepositories
 public class CoreConfiguration {
 
     @Value("${datasource.type.JPA}")
@@ -48,11 +50,6 @@ public class CoreConfiguration {
             return new ProductServiceImplJPA(productRepositoryJpa);
         } else return new ProductServiceImplDAO(productRepositoryDAO);
     }
-
-//    @Bean
-//    public ProfileExecutionAspect profileExecutionAspect() {
-//        return new ProfileExecutionAspect(activeProfile);
-//    }
 
     @Bean
     public ProfileExecutionAspect profileExecutionAspect() {

@@ -7,16 +7,19 @@ import by.wadikk.persistence.base.ErrorType;
 import by.wadikk.persistence.entities.Product;
 import by.wadikk.persistence.exception.SampleException;
 import com.google.common.collect.Lists;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@Primary
 public class ProductServiceImplJPA implements ProductService {
 
-    private final ProductRepositoryJpa productRepository;
+    private ProductRepositoryJpa productRepository;
 
     @Autowired
     public ProductServiceImplJPA(ProductRepositoryJpa productRepository) {

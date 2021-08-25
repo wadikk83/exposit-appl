@@ -24,6 +24,7 @@ import javax.sql.DataSource;
 @EntityScan
 @EnableTransactionManagement
 @PropertySource("classpath:persistence.properties")
+@PropertySource("classpath:liquibase.properties")
 @ConditionalOnClass
 public class PersistenceConfiguration {
 

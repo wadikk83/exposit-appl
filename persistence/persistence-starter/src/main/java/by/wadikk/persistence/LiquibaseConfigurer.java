@@ -24,7 +24,8 @@ public class LiquibaseConfigurer {
     @DependsOn
     public SpringLiquibase liquibase() {
         SpringLiquibase liquibase = new SpringLiquibase();
-        liquibase.setChangeLog("classpath:db/changelog/db.changelog-master.xml");
+        //liquibase.setChangeLog("classpath:db/changelog/db.changelog-master.xml");
+        liquibase.setChangeLog("db/changelog/db.changelog-master.xml");
         liquibase.setDataSource(oltpDataSource);
         return liquibase;
     }
