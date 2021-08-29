@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="250" author="wadikk">
+        <insert tableName="store">
+            <column name="name">Store1</column>
+            <column name="description">tra-ta-ta</column>
+        </insert>
+        <insert tableName="store">
+            <column name="name">Store2</column>
+            <column name="description">tru--la-la</column>
+        </insert>
+        <insert tableName="store">
+            <column name="name">Store3</column>
+            <column name="description">a-ta-ta</column>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

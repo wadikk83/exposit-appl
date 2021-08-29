@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+by.wadikk.persistence.PersistenceConfiguration,by.wadikk.loader.LoaderConfiguration

@@ -1,0 +1,7 @@
+
+  schedule:
+    list-schedule:
+      - directory: d:/temp/load-1
+        time: 2021-08-29 19:25:00
+      - directory: d:/temp/load-2
+        time: 2021-08-29 19:26:00

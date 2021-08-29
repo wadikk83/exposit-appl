@@ -1,26 +1,21 @@
 package by.wadikk.web.controller.common;
 
 import by.wadikk.core.service.common.CommonService;
-import by.wadikk.persistence.entities.BaseEntity;
+import by.wadikk.persistence.dto.AbstractDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
 
-public abstract class AbstractController<E extends BaseEntity, S extends CommonService<E>>
+public abstract class AbstractController<E extends AbstractDto, S extends CommonService<E>>
         implements CommonController<E> {
 
     private final S service;
 
-    @Autowired
-    protected AbstractController(S service) {
+    public AbstractController(S service) {
         this.service = service;
     }
 

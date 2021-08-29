@@ -19,44 +19,28 @@
     <dependencies>
 
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-        </dependency>
-
-        <dependency>
             <groupId>by.wadikk</groupId>
             <artifactId>core-starter</artifactId>
-            <version>1.0-SNAPSHOT</version>
         </dependency>
 
         <dependency>
             <groupId>by.wadikk</groupId>
-            <artifactId>core-server</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <artifactId>loader-starter</artifactId>
         </dependency>
 
         <dependency>
             <groupId>by.wadikk</groupId>
             <artifactId>persistence-starter</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-
-        <dependency>
-            <groupId>by.wadikk</groupId>
-            <artifactId>persistence-core</artifactId>
-            <version>1.0-SNAPSHOT</version>
         </dependency>
 
         <dependency>
             <groupId>by.wadikk</groupId>
             <artifactId>web-starter</artifactId>
-            <version>1.0-SNAPSHOT</version>
         </dependency>
 
         <dependency>
-            <groupId>by.wadikk</groupId>
-            <artifactId>web-server</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
         </dependency>
 
         <dependency>

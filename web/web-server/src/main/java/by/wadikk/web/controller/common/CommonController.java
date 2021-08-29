@@ -1,6 +1,7 @@
 package by.wadikk.web.controller.common;
 
 import by.wadikk.core.annotation.ProfileExecution;
+import by.wadikk.persistence.dto.AbstractDto;
 import by.wadikk.persistence.entities.BaseEntity;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -13,7 +14,7 @@ import javax.validation.constraints.Min;
 import java.util.List;
 
 
-public interface CommonController<E extends BaseEntity> {
+public interface CommonController<E extends AbstractDto> {
 
     @PostMapping(value = "")
     @Operation(summary = "Создание новой сущности",

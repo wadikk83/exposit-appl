@@ -1,45 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
-    <property name="LOG_FILE" value="${LOG_FILE:-${LOG_PATH:-${LOG_TEMP:-${java.io.tmpdir:-/tmp}}/}spring.log}"/>
+    <property name="LOG_DIR" value="logs"/>
+    <property resource="application.properties"/>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>
+                %d{dd-MM-yyyy HH:mm:ss.SSS} %magenta([%thread]) %highlight(%-5level) %logger.%M - %msg%n
+            </pattern>
+        </encoder>
+    </appender>
+
+    <appender name="SAVE-TO-FILE" class="ch.qos.logback.core.FileAppender">
+        <file>${LOG_PATH}/log.log</file>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <Pattern>
+                %d{dd-MM-yyyy HH:mm:ss.SSS} [%thread] %-5level %logger{36}.%M - %msg%n
+            </Pattern>
+        </encoder>
+    </appender>
 
     <springProfile name="dev">
-        <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
-        <appender name="ROLLING-FILE"
-                  class="ch.qos.logback.core.rolling.RollingFileAppender">
-            <encoder>
-                <pattern>${FILE_LOG_PATTERN}</pattern>
-            </encoder>
-            <file>${LOG_FILE}</file>
-            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-                <fileNamePattern>${LOG_FILE}.%d{yyyy-MM-dd}.log</fileNamePattern>
-            </rollingPolicy>
-        </appender>
-        <root level="DEBUG">
-            <appender-ref ref="CONSOLE"/>
-            <appender-ref ref="ROLLING-FILE"/>
+        <root level="info">
+            <appender-ref ref="STDOUT"/>
+            <appender-ref ref="SAVE-TO-FILE"/>
         </root>
+        <!--<logger name="by.wadikk" additivity="false" level="debug">
+            <appender-ref ref="STDOUT"/>
+            <appender-ref ref="SAVE-TO-FILE"/>
+        </logger>-->
     </springProfile>
 
     <springProfile name="prod">
-        <appender name="ROLLING-FILE"
-                  class="ch.qos.logback.core.rolling.RollingFileAppender">
-            <encoder>
-                <pattern>${FILE_LOG_PATTERN}</pattern>
-            </encoder>
-            <file>${LOG_FILE}</file>
-            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-                <fileNamePattern>${LOG_FILE}.%d{yyyy-MM-dd}.%i.gz</fileNamePattern>
-                <timeBasedFileNamingAndTriggeringPolicy
-                        class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
-                    <maxFileSize>10MB</maxFileSize>
-                </timeBasedFileNamingAndTriggeringPolicy>
-            </rollingPolicy>
-        </appender>
-
-        <root level="INFO">
-            <appender-ref ref="ROLLING-FILE"/>
+        <root level="info">
+            <appender-ref ref="SAVE-TO-FILE"/>
         </root>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>
+                ${LOG_PATH}/archived/log_%d{dd-MM-yyyy}.log
+            </fileNamePattern>
+            <maxHistory>10</maxHistory>
+            <totalSizeCap>10MB</totalSizeCap>
+        </rollingPolicy>
+        <!--<logger name="by.wadikk" additivity="false" level="error">
+            <appender-ref ref="SAVE-TO-FILE"/>
+        </logger>-->
     </springProfile>
 
 </configuration>

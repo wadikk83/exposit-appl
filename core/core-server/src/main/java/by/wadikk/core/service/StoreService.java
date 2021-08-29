@@ -1,0 +1,7 @@
+package by.wadikk.core.service;
+
+import by.wadikk.core.service.common.CommonService;
+import by.wadikk.persistence.dto.StoreDto;
+
+public interface StoreService extends CommonService<StoreDto> {
+}

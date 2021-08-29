@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="210" author="wadikk">
+        <insert tableName="attribute_name">
+            <column name="name">attrName1</column>
+        </insert>
+        <insert tableName="attribute_name">
+            <column name="name">attrName2</column>
+        </insert>
+        <insert tableName="attribute_name">
+            <column name="name">attrName3</column>
+        </insert>
+        <insert tableName="attribute_name">
+            <column name="name">attrName4</column>
+        </insert>
+
+    </changeSet>
+</databaseChangeLog>

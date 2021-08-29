@@ -1,7 +1,6 @@
 package by.wadikk.persistence;
 
 
-import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -14,6 +13,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.sql.DataSource;
 
@@ -25,14 +25,16 @@ import javax.sql.DataSource;
 @EnableTransactionManagement
 @PropertySource("classpath:persistence.properties")
 @PropertySource("classpath:liquibase.properties")
-@ConditionalOnClass
 public class PersistenceConfiguration {
 
-    public static final String USER_CLASS_NAME = "UserDao";
-    public static final String PRODUCT_CLASS_NAME = "ProductDao";
-    public static final String CATEGORY_CLASS_NAME = "CategoryDao";
-
     public static String fileDirectory;
+
+    public static String USER_CLASS_NAME;
+    public static String PRODUCT_CLASS_NAME;
+    public static String CATEGORY_CLASS_NAME;
+    public static String ARTICLE_CLASS_NAME;
+    public static String STORE_CLASS_NAME;
+
     public static String datasourceFileFormat;
 
     @Resource
@@ -56,4 +58,14 @@ public class PersistenceConfiguration {
         return dataSource;
     }
 
+
+    @PostConstruct
+    public void initialise() {
+        USER_CLASS_NAME = fileDirectory + "UserDao";
+        PRODUCT_CLASS_NAME = fileDirectory + "ProductDao";
+        CATEGORY_CLASS_NAME = fileDirectory + "CategoryDao";
+        ARTICLE_CLASS_NAME = fileDirectory + "ArticleDao";
+        STORE_CLASS_NAME = fileDirectory + "StoreDao";
+
+    }
 }
