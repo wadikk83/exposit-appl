@@ -68,14 +68,14 @@ public class CoreConfiguration {
         } else return new ProductServiceImplDTO(productRepositoryDAO) ;
     }
 
-    @Bean
+    /*@Bean
     public ArticleService articleService(ArticleRepositoryJpa articleRepositoryJpa,
                                          ArticleMapper articleMapper,
                                          ArticleRepositoryDTO articleRepositoryDAO) {
         if (datasourceTypeJPA.equals("true")) {
             return new ArticleServiceImplJPA(articleRepositoryJpa, articleMapper);
         } else return new ArticleServiceImplDTO(articleRepositoryDAO);
-    }
+    }*/
     @Bean
     public StoreService storeService(StoreRepositoryJpa storeRepositoryJpa,
                                      StoreRepositoryDTO storeRepositoryDAO) {

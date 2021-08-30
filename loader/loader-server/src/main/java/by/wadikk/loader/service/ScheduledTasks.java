@@ -2,7 +2,7 @@ package by.wadikk.loader.service;
 
 import by.wadikk.core.parser.FileManager;
 import by.wadikk.core.parser.FileManagerImpl;
-import by.wadikk.core.service.ProductService;
+import by.wadikk.core.service.ArticleService;
 import by.wadikk.loader.model.ListSchedule;
 import by.wadikk.loader.model.Schedule;
 import by.wadikk.loader.threads.ConsumerThread;
@@ -11,9 +11,10 @@ import by.wadikk.persistence.dto.ArticleDto;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -24,16 +25,17 @@ import java.util.stream.Collectors;
 
 @Slf4j
 @Component
+@EnableScheduling
 public class ScheduledTasks {
 
     @Autowired
-    private ProductService productService;
+    private ArticleService service;
 
     private FileManager fileManager = new FileManagerImpl();
 
     private final ListSchedule listSchedule;
 
-    private BlockingQueue<ArticleDto> queue = new LinkedBlockingQueue<>();
+    private BlockingQueue<ArticleDto> queue;
     private ScheduledExecutorService executorService = Executors.newScheduledThreadPool(10);
 
     public ScheduledTasks(ListSchedule listSchedule) {
@@ -41,8 +43,12 @@ public class ScheduledTasks {
     }
 
     @SneakyThrows
-    @PostConstruct
+    //@PostConstruct
+    @Scheduled(fixedRate = 50000)
     public void run() {
+        log.debug("All article -> {}",service.getAll());
+
+        queue = new LinkedBlockingQueue<>();
 
         for (Schedule schedule : listSchedule.getListSchedule()) {
 
@@ -72,12 +78,10 @@ public class ScheduledTasks {
                         new ProducerThread(queue, file.getAbsolutePath()), 100, 60, TimeUnit.SECONDS);*/
 
                 executorService.schedule(
-                        new ConsumerThread(queue), 10, TimeUnit.SECONDS);
+                        new ConsumerThread(queue, service), 10, TimeUnit.SECONDS);
 
                 /*executorService.scheduleAtFixedRate(
                         new ConsumerThread(queue), 30, 60, TimeUnit.SECONDS);*/
-
-                //new ConsumerThread(queue).run();
             }
         }
         //executorService.shutdown();

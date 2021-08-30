@@ -1,38 +1,35 @@
 package by.wadikk.loader.threads;
 
+import by.wadikk.core.service.ArticleService;
 import by.wadikk.persistence.dto.ArticleDto;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
 
 import java.util.concurrent.BlockingQueue;
 
 @Slf4j
 public class ConsumerThread implements Runnable {
 
-    private BlockingQueue<ArticleDto> queue;
+    private final BlockingQueue<ArticleDto> queue;
+    private final ArticleService service;
 
-    @Autowired
-    private ApplicationContext context;
-
-    public ConsumerThread(BlockingQueue<ArticleDto> queue) {
+    public ConsumerThread(BlockingQueue<ArticleDto> queue, ArticleService service) {
         this.queue = queue;
+        this.service = service;
     }
 
     @Override
     public void run() {
         log.info("Consumer thread start");
-
-        log.info(queue.poll().toString());
-//        private ArticleService service = context.getBean(ArticleService.class);
-        /*while (!queue.isEmpty()) {
+        while (!queue.isEmpty()) {
             ArticleDto model = queue.poll();
-            log.info("----------------------------------------{}", model);
-            *//* service.save(model);*//*
-            log.info("Safe entity {} from loader", model);
-        }*/
-
-
+            try {
+                service.save(model);
+            } catch (Exception e) {
+                log.error(e.toString(), e);
+                continue;
+            }
+            log.info("A model {} from the queue was added", model);
+        }
         log.info("Consumer thread stop");
     }
 }

@@ -19,7 +19,7 @@ import javax.sql.DataSource;
 
 @Configuration
 @EnableConfigurationProperties
-@ComponentScan
+@ComponentScan(basePackages = {"by.wadikk.persistence"})
 @EnableJpaRepositories
 @EntityScan
 @EnableTransactionManagement

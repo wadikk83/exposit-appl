@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Configuration;
 
 @ComponentScan(basePackages = {"by.wadikk.web"})
 @Configuration
-@ComponentScan
+@ComponentScan(basePackages = {"by.wadikk.web"})
 public class WebConfiguration {
 
 }

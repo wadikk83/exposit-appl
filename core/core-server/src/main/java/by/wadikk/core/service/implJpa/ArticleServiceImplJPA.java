@@ -6,7 +6,12 @@ import by.wadikk.core.service.ArticleService;
 import by.wadikk.core.service.common.CommonServiceImplJPA;
 import by.wadikk.persistence.dto.ArticleDto;
 import by.wadikk.persistence.entities.Article;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
+
+@Service
+@Qualifier
 public class ArticleServiceImplJPA extends CommonServiceImplJPA<ArticleDto,Article,ArticleRepositoryJpa>
         implements ArticleService{
 
