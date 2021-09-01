@@ -53,20 +53,20 @@ public class CoreConfiguration {
     @Autowired
     private Environment environment;
 
-    @Bean
+    /*@Bean
     public UserService userService(UserRepositoryJpa userRepositoryJpa, UserRepositoryDTO userRepositoryDAO) {
         if (datasourceTypeJPA.equals("true")) {
             return new UserServiceImplJPA(userRepositoryJpa);
         } else return new UserServiceImplDAO(userRepositoryDAO);
-    }
+    }*/
 
-    @Bean
+    /*@Bean
     public ProductService productService(ProductRepositoryJpa productRepositoryJpa,
                                          ProductRepositoryDTO productRepositoryDAO) {
         if (datasourceTypeJPA.equals("true")) {
             return new ProductServiceImplJPA(productRepositoryJpa);
         } else return new ProductServiceImplDTO(productRepositoryDAO) ;
-    }
+    }*/
 
     /*@Bean
     public ArticleService articleService(ArticleRepositoryJpa articleRepositoryJpa,

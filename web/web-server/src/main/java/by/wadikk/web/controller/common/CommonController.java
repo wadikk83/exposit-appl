@@ -22,7 +22,6 @@ public interface CommonController<E extends AbstractDto> {
     public ResponseEntity<?> create(@RequestBody @Valid E entity);
 
     @GetMapping(value = "")
-
     @Operation(summary = "Получение всех сущностей",
             description = "Позволяет получить список всех сущностей")
     public ResponseEntity<List<E>> getAll();

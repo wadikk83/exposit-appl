@@ -3,8 +3,11 @@ package by.wadikk.core.service.implDTO;
 import by.wadikk.core.repository.repositoryDTO.UserRepositoryDTO;
 import by.wadikk.core.service.UserService;
 import by.wadikk.persistence.dto.UserDto;
+import by.wadikk.persistence.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.Specification;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -48,4 +51,8 @@ public class UserServiceImplDAO implements UserService {
         return repository.deleteAll();
     }
 
+    @Override
+    public List<UserDto> findAll(Specification<User> userSpecification) {
+        return new ArrayList<UserDto>();
+    }
 }

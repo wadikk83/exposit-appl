@@ -13,7 +13,7 @@ import java.util.List;
 public abstract class AbstractController<E extends AbstractDto, S extends CommonService<E>>
         implements CommonController<E> {
 
-    private final S service;
+    protected final S service;
 
     public AbstractController(S service) {
         this.service = service;

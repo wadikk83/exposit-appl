@@ -16,8 +16,8 @@ public class CommonServiceImplJPA<D extends AbstractDto,
         E extends BaseEntity, R extends JpaRepository<E, Long>>
         implements CommonService<D> {
 
-    private final R repository;
-    private final Mapper<E, D> mapper;
+    protected final R repository;
+    protected final Mapper<E, D> mapper;
 
     public CommonServiceImplJPA(R repository, Mapper<E, D> mapper) {
         this.repository = repository;

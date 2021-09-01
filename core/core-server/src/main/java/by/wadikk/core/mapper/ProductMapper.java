@@ -6,11 +6,13 @@ import by.wadikk.persistence.entities.Article;
 import by.wadikk.persistence.entities.Product;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Component
 public class ProductMapper extends AbstractMapper<Product, ProductDto> {
 
 //    private List<CategoryDto> categories;
