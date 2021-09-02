@@ -5,15 +5,17 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
-    <changeSet id="90" author="wadikk">
-        <createTable tableName="order_status_name">
+    <changeSet id="create-order-item-table" author="wadikk">
+        <createTable tableName="order_item">
             <column name="id" type="java.lang.Long" autoIncrement="true">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
-            <column name="order_status_name" type="java.lang.String"/>
+            <column name="created" type="datetime"/>
+            <column name="updated" type="datetime"/>
+            <column name="article_id" type="java.lang.Long"/>
+            <column name="order_id" type="java.lang.Long"/>
+            <column name="amount" type="java.lang.Integer"/>
+            <column name="product_price" type="java.lang.Double"/>
         </createTable>
     </changeSet>
-
-
-
 </databaseChangeLog>

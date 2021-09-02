@@ -21,7 +21,6 @@ public class AbstractRepositoryDTO<E extends AbstractDto> implements CommonRepos
 
         this.entityFilename = entityFilename;
         parser = new ParserFactory().getParser();
-        //parser = new JsonParser<>();
     }
 
     @Override

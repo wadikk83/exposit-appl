@@ -6,10 +6,17 @@
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
 
-    <include file="01-changeset-add-data-to-users-table.xml" relativeToChangelogFile="true"></include>
-    <include file="10-changeset-add-data-to-attribute-name-table.xml" relativeToChangelogFile="true"></include>
-<!--    <include file="20-changeset-add-data-to-category-table.xml" relativeToChangelogFile="true"></include>-->
-    <!--<include file="30-changeset-add-data-to-product-table.xml" relativeToChangelogFile="true"></include>-->
-    <include file="50-changeset-add-data-to-store-table.xml" relativeToChangelogFile="true"></include>
+    <include file="01-changeset-create-relations-category-to-category.xml" relativeToChangelogFile="true"></include>
+    <include file="10-changeset-create-relations-product-attribute-to-product.xml"
+             relativeToChangelogFile="true"></include>
+    <include file="20-changeset-create-relations-product-attribute-to-attribute-name.xml"
+             relativeToChangelogFile="true"/>
+    <include file="30-changeset-create-relations-article-to-product.xml" relativeToChangelogFile="true"/>
+    <include file="40-changeset-create-relations-article-to-store.xml" relativeToChangelogFile="true"/>
+    <include file="50-changeset-create-relations-order-to-user.xml" relativeToChangelogFile="true"/>
+    <include file="60-changeset-create-relations-order-item-to-article.xml" relativeToChangelogFile="true"/>
+    <include file="70-changeset-create-relations-order-item-to-order.xml" relativeToChangelogFile="true"/>
+    <include file="80-changeset-create-relations-order-status-to-order.xml" relativeToChangelogFile="true"/>
+    <include file="90-changeset-create-relations-order-status-to-order-status-name.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>

@@ -7,21 +7,21 @@
 
     <changeSet id="201" author="wadikk">
         <insert tableName="users">
-            <column name="login">user1</column>
+            <column name="login">user1jpa</column>
             <column name="password">password</column>
             <column name="full_name">username1</column>
             <column name="address">address1</column>
             <column name="email">1@tut.by</column>
         </insert>
         <insert tableName="users">
-            <column name="login">user2</column>
+            <column name="login">user2jpa</column>
             <column name="password">password</column>
             <column name="full_name">username2</column>
             <column name="address">address1</column>
             <column name="email">2@tut.by</column>
         </insert>
         <insert tableName="users">
-            <column name="login">user3</column>
+            <column name="login">user3jpa</column>
             <column name="password">password</column>
             <column name="full_name">username3</column>
             <column name="address">address3</column>

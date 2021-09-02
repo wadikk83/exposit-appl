@@ -53,7 +53,7 @@ public class PersistenceConfiguration {
         dataSource.setUsername(environment.getRequiredProperty("spring.datasource.username"));
         dataSource.setPassword(environment.getRequiredProperty("spring.datasource.password"));
 
-        fileDirectory = environment.getRequiredProperty("datasource.file.directory");
+//        fileDirectory = environment.getRequiredProperty("datasource.file.directory");
         datasourceFileFormat = environment.getRequiredProperty("datasource.file.format");
         return dataSource;
     }
@@ -61,6 +61,9 @@ public class PersistenceConfiguration {
 
     @PostConstruct
     public void initialise() {
+
+        fileDirectory = environment.getRequiredProperty("datasource.file.directory");
+
         USER_CLASS_NAME = fileDirectory + "UserDao";
         PRODUCT_CLASS_NAME = fileDirectory + "ProductDao";
         CATEGORY_CLASS_NAME = fileDirectory + "CategoryDao";

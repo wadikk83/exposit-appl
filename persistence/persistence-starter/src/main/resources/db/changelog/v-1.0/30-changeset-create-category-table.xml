@@ -5,26 +5,18 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
-
-    <changeSet author="wadikk" id="30">
+    <changeSet author="wadikk" id="create-category-table">
         <createTable tableName="category">
             <column name="id" type="java.lang.Long" autoIncrement="true">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
+            <column name="created" type="datetime"/>
+            <column name="updated" type="datetime"/>
             <column name="name" type="java.lang.String">-->
                 <constraints nullable="false" unique="true"/>
             </column>
             <column name="parent_id" type="java.lang.Long"/>
             <column name="id_parent" type="java.lang.Long"/>
         </createTable>
-
-        <addForeignKeyConstraint baseColumnNames="parent_id"
-                                 baseTableName="category"
-                                 constraintName="fk_category_child->to_parent"
-                                 referencedTableName="category"
-                                 referencedColumnNames="id"
-                                 onDelete="CASCADE"/>
     </changeSet>
-
-
 </databaseChangeLog>

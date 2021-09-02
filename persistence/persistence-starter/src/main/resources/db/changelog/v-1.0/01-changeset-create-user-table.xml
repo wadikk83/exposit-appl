@@ -5,11 +5,13 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
-    <changeSet author="wadikk" id="7579696968-1">
+    <changeSet author="wadikk" id="create-user-table">
         <createTable tableName="users">
             <column name="id" type="java.lang.Long" autoIncrement="true">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="pk_users"/>
             </column>
+            <column name="created" type="datetime"/>
+            <column name="updated" type="datetime"/>
             <column name="login" type="java.lang.String">
                 <constraints nullable="false" unique="true"/>
             </column>

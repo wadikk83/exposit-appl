@@ -7,11 +7,12 @@ import by.wadikk.core.service.common.CommonServiceImplJPA;
 import by.wadikk.persistence.dto.ArticleDto;
 import by.wadikk.persistence.entities.Article;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Service;
 
 
+@ConditionalOnProperty(name = "datasource.type.JPA", havingValue = "true")
 @Service
-@Qualifier
 public class ArticleServiceImplJPA extends CommonServiceImplJPA<ArticleDto,Article,ArticleRepositoryJpa>
         implements ArticleService{
 

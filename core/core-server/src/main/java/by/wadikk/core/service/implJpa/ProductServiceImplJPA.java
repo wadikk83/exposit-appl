@@ -6,12 +6,14 @@ import by.wadikk.core.service.ProductService;
 import by.wadikk.core.service.common.CommonServiceImplJPA;
 import by.wadikk.persistence.dto.ProductDto;
 import by.wadikk.persistence.entities.Product;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@ConditionalOnProperty(name = "datasource.type.JPA", havingValue = "true")
 @Service
 public class ProductServiceImplJPA extends CommonServiceImplJPA<ProductDto, Product, ProductRepositoryJpa>
         implements ProductService {

@@ -5,19 +5,17 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
-    <changeSet id="70" author="wadikk">
-        <createTable tableName="order">
+    <changeSet id="90" author="wadikk">
+        <createTable tableName="order_status_name">
             <column name="id" type="java.lang.Long" autoIncrement="true">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
-            <column name="user_id" type="java.lang.Long"/>
-            <column name="date_created" type="java.sql.Types.DATETIME"/>
+            <column name="created" type="datetime"/>
+            <column name="updated" type="datetime"/>
+            <column name="order_status_name" type="java.lang.String"/>
         </createTable>
-
-        <addForeignKeyConstraint baseColumnNames="user_id"
-                                 baseTableName="order"
-                                 constraintName="fk_order->user"
-                                 referencedTableName="users"
-                                 referencedColumnNames="id"/>
     </changeSet>
+
+
+
 </databaseChangeLog>

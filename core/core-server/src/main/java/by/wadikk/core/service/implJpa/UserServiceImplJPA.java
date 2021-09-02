@@ -7,6 +7,7 @@ import by.wadikk.core.service.UserService;
 import by.wadikk.core.service.common.CommonServiceImplJPA;
 import by.wadikk.persistence.dto.UserDto;
 import by.wadikk.persistence.entities.User;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@ConditionalOnProperty(name = "datasource.type.JPA", havingValue = "true")
 @Service
 public class UserServiceImplJPA extends CommonServiceImplJPA<UserDto, User, UserRepositoryJpa>
         implements UserService {

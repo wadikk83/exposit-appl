@@ -5,12 +5,14 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
-    <changeSet author="wadikk" id="45">
+    <changeSet author="wadikk" id="create-product-category-table">
 
         <createTable tableName="product_category">
             <column name="id" type="java.lang.Long" autoIncrement="true">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
+            <column name="created" type="datetime"/>
+            <column name="updated" type="datetime"/>
             <column name="prod_id" type="java.lang.Long">
                 <constraints nullable="false"
                              foreignKeyName="product_category->product"

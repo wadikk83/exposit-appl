@@ -18,14 +18,8 @@ import java.util.List;
 @Component
 public class JsonParser<T> implements Parser<T> {
 
-//    private String fileDirectory = PersistenceConfiguration.fileDirectory;
 
     private String fileDirectory;
-
-//    @PostConstruct
-//    public void initialise() {
-//        fileDirectory = PersistenceConfiguration.fileDirectory;
-//    }
 
     @SneakyThrows
     @Override

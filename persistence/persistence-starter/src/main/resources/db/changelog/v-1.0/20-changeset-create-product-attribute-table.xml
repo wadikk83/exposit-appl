@@ -5,23 +5,18 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
-    <changeSet author="wadikk" id="20">
+    <changeSet author="wadikk" id="create-product-attribute-table">
         <createTable tableName="product_attribute">
             <column name="id" type="java.lang.Long" autoIncrement="true">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
+            <column name="created" type="datetime"/>
+            <column name="updated" type="datetime"/>
             <column name="name" type="java.lang.String">
                 <constraints nullable="false" unique="true"/>
             </column>
             <column name="value" type="java.lang.String"/>
-            <!--many-to-one-->
-            <column name="attribute_name_id" type="java.lang.Long">
-                <constraints nullable="false"
-                             deleteCascade="true"
-                             foreignKeyName="fk_product_attribute->attribute_name"
-                             referencedTableName="attribute_name"
-                             referencedColumnNames="id"/>
-            </column>
+            <column name="attribute_name_id" type="java.lang.Long"/>
             <column name="product_id" type="java.lang.Long"/>
         </createTable>
     </changeSet>

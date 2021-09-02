@@ -12,10 +12,14 @@ import by.wadikk.persistence.entities.Article;
 import by.wadikk.persistence.entities.Store;
 import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@ConditionalOnProperty(name = "datasource.type.JPA", havingValue = "true")
+@Service
 public class StoreServiceImplJPA implements StoreService {
 
     private final StoreRepositoryJpa storeRepository;

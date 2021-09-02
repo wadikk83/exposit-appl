@@ -21,9 +21,11 @@ public class Category extends BaseEntity {
     @ManyToMany(mappedBy = "categories")
     private List<Product> products = new ArrayList();
 
+    //ссылка на родителя
     @ManyToOne
     private Category parent;
 
+    //список дочерних категорий
     @OneToMany(mappedBy = "parent", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Category> childList;

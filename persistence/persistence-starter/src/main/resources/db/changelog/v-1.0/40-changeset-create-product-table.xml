@@ -5,14 +5,16 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
-    <changeSet author="wadikk" id="50">
-        <createTable tableName="store">
+    <changeSet author="wadikk" id="create-product-table">
+        <createTable tableName="products">
             <column name="id" type="java.lang.Long" autoIncrement="true">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
-            <column name="name" type="java.lang.String"/>
-            <column name="description" type="java.lang.String"/>
-            <column name="article" type="java.lang.Long"/>
+            <column name="created" type="datetime"/>
+            <column name="updated" type="datetime"/>
+            <column name="name" type="java.lang.String">
+                <constraints nullable="false" unique="true"/>
+            </column>
         </createTable>
     </changeSet>
 </databaseChangeLog>
