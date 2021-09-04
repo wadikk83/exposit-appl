@@ -18,5 +18,6 @@
     <include file="70-changeset-create-relations-order-item-to-order.xml" relativeToChangelogFile="true"/>
     <include file="80-changeset-create-relations-order-status-to-order.xml" relativeToChangelogFile="true"/>
     <include file="90-changeset-create-relations-order-status-to-order-status-name.xml" relativeToChangelogFile="true"/>
+    <include file="100-changeset-create-relations-category-to-product.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>

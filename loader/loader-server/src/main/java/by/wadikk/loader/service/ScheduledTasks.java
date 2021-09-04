@@ -1,8 +1,9 @@
 package by.wadikk.loader.service;
 
-import by.wadikk.core.parser.FileManager;
-import by.wadikk.core.parser.FileManagerImpl;
+import by.wadikk.core.exception.FileFormatException;
+import by.wadikk.core.parser.*;
 import by.wadikk.core.service.ArticleService;
+import by.wadikk.loader.model.ArticleModel;
 import by.wadikk.loader.model.ListSchedule;
 import by.wadikk.loader.model.Schedule;
 import by.wadikk.loader.threads.ConsumerThread;
@@ -31,7 +32,8 @@ public class ScheduledTasks {
     @Autowired
     private ArticleService service;
 
-    private FileManager fileManager = new FileManagerImpl();
+    @Autowired
+    private FileManager fileManager;
 
     private final ListSchedule listSchedule;
 
@@ -46,7 +48,7 @@ public class ScheduledTasks {
     //@PostConstruct
     @Scheduled(fixedRate = 50000)
     public void run() {
-        log.debug("All article -> {}",service.getAll());
+        log.debug("All article -> {}", service.getAll());
 
         queue = new LinkedBlockingQueue<>();
 
@@ -69,21 +71,28 @@ public class ScheduledTasks {
             }
 
             for (File file : filesInFolder) {
+                Parser<ArticleDto> parser = null;
+                switch (fileManager.getExtension(file.getAbsolutePath())) {
+                    case "xml":
+                        parser = new XmlParser();
+                        break;
+                    case "json":
+                        parser = new JsonParser();
+                        break;
+                    default:
+                        log.error(String.valueOf(new FileFormatException("File format is not supported")));
+                        continue;
+                }
+
                 long timeDelay = schedule.getTime().getSecond() - System.currentTimeMillis();
 
                 executorService.schedule(
-                        new ProducerThread(queue, file.getAbsolutePath()), 5, TimeUnit.SECONDS);
-
-               /* executorService.scheduleAtFixedRate(
-                        new ProducerThread(queue, file.getAbsolutePath()), 100, 60, TimeUnit.SECONDS);*/
+                        new ProducerThread(queue, file.getAbsolutePath(), parser), 5, TimeUnit.SECONDS);
 
                 executorService.schedule(
                         new ConsumerThread(queue, service), 10, TimeUnit.SECONDS);
-
-                /*executorService.scheduleAtFixedRate(
-                        new ConsumerThread(queue), 30, 60, TimeUnit.SECONDS);*/
             }
         }
-        //executorService.shutdown();
+        executorService.shutdown();
     }
 }

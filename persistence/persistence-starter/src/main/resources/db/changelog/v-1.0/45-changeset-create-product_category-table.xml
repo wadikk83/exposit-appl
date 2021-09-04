@@ -5,7 +5,7 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
-    <changeSet author="wadikk" id="create-product-category-table">
+    <changeSet author="wadikk" id="create-product_category-table">
 
         <createTable tableName="product_category">
             <column name="id" type="java.lang.Long" autoIncrement="true">
@@ -13,34 +13,8 @@
             </column>
             <column name="created" type="datetime"/>
             <column name="updated" type="datetime"/>
-            <column name="prod_id" type="java.lang.Long">
-                <constraints nullable="false"
-                             foreignKeyName="product_category->product"
-                             deleteCascade="true"
-                             referencedTableName="products"
-                             referencedColumnNames="id"/>
-            </column>
-            <column name="cat_id" type="java.lang.Long">
-                <constraints nullable="false"
-                             foreignKeyName="product_category->category"
-                             deleteCascade="true"
-                             referencedTableName="category"
-                             referencedColumnNames="id"/>
-            </column>
+            <column name="prod_id" type="java.lang.Long"/>
+            <column name="cat_id" type="java.lang.Long"/>
         </createTable>
-
-        <!--<addForeignKeyConstraint onDelete="CASCADE"
-                                 baseTableName="product_category"
-                                 baseColumnNames="prod_id"
-                                 constraintName="fk_product_category->product"
-                                 referencedTableName="products"
-                                 referencedColumnNames="id"/>
-        <addForeignKeyConstraint onDelete="CASCADE"
-                                 baseTableName="product_category"
-                                 baseColumnNames="cat_id"
-                                 constraintName="fk_product_category->category"
-                                 referencedTableName="category"
-                                 referencedColumnNames="id"/>-->
-
     </changeSet>
 </databaseChangeLog>

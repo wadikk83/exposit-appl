@@ -7,9 +7,10 @@
 
 
     <include file="01-changeset-add-data-to-users-table.xml" relativeToChangelogFile="true"></include>
-    <include file="10-changeset-add-data-to-attribute-name-table.xml" relativeToChangelogFile="true"></include>
     <include file="20-changeset-add-data-to-category-table.xml" relativeToChangelogFile="true"></include>
-    <include file="30-changeset-add-data-to-product-table.xml" relativeToChangelogFile="true"></include>
-    <!--    <include file="50-changeset-add-data-to-store-table.xml" relativeToChangelogFile="true"></include>-->
+    <include file="30-changeset-add-data-to-attribute-name-table.xml" relativeToChangelogFile="true"></include>
+    <include file="40-changeset-add-data-to-product-table.xml" relativeToChangelogFile="true"></include>
+    <include file="50-changeset-add-data-to-product-attribute-table.xml" relativeToChangelogFile="true"/>
+    <include file="60-changeset-add-data-to-store-table.xml" relativeToChangelogFile="true"></include>
 
 </databaseChangeLog>

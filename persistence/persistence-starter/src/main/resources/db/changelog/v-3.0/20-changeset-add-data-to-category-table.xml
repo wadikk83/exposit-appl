@@ -5,7 +5,7 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
-    <changeSet id="220" author="wadikk">
+    <changeSet id="add-data-to-category-table" author="wadikk">
         <insert tableName="category">
             <column name="name">parent</column>
             <column name="parent_id">null</column>

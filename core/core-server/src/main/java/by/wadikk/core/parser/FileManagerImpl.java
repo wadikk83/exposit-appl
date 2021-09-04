@@ -1,7 +1,9 @@
 package by.wadikk.core.parser;
 
 import by.wadikk.core.exception.NoHandlerException;
+import org.springframework.stereotype.Component;
 
+@Component
 public class FileManagerImpl implements FileManager {
     @Override
     public String getExtension(String fileName) {

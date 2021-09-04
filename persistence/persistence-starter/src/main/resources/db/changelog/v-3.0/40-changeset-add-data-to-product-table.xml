@@ -5,17 +5,17 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
-    <changeSet id="2021-03-09-00-12" author="wadikk">
+    <changeSet id="add-data-to-product-table" author="wadikk">
         <insert tableName="products">
-            <column name="name">product1</column>
+            <column name="name">Product1</column>
         </insert>
 
         <insert tableName="products">
-            <column name="name">product2</column>
+            <column name="name">Product2</column>
         </insert>
 
         <insert tableName="products">
-            <column name="name">product3</column>
+            <column name="name">Product3</column>
         </insert>
 
     </changeSet>

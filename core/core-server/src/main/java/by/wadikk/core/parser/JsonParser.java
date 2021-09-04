@@ -39,10 +39,6 @@ public class JsonParser<T> implements Parser<T> {
 
         List<T> decoded = null;
         try {
-            /*decoded = mapper.readValue(
-                    new File(fileDirectory + fullFileName),
-                    new TypeReference<List<T>>() {
-                    });*/
             decoded = mapper.readValue(
                     new File(fullFileName),
                     new TypeReference<List<T>>() {

@@ -15,7 +15,7 @@
     <include file="60-changeset-create-article-table.xml" relativeToChangelogFile="true"/>
     <include file="70-changeset-create-order-table.xml" relativeToChangelogFile="true"/>
     <include file="80-changeset-create-order-item-table.xml" relativeToChangelogFile="true"/>
-    <include file="90-changeset-create-order-status-name.xml" relativeToChangelogFile="true"/>
-    <include file="100-changeset-create-order-status.xml" relativeToChangelogFile="true"/>
+    <include file="90-changeset-create-order-status-name-table.xml" relativeToChangelogFile="true"/>
+    <include file="100-changeset-create-order-status-table.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>

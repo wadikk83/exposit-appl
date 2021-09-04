@@ -21,9 +21,6 @@ public class XmlParser<T> implements Parser<T> {
     public void write(@NonNull String className, List<T> list) {
         String fileName = className + ".xml";
 
-        // TODO: 21.08.2021 заглушка
-        //fileDirectory = "d:/temp/xml/";
-
         final XMLEncoder encoder = new XMLEncoder(new BufferedOutputStream(
                 new FileOutputStream(fileDirectory + fileName)));
         encoder.writeObject(list);
