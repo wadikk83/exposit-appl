@@ -30,6 +30,6 @@ public class Category extends BaseEntity {
     @JsonIgnore
     private List<Category> childList;
 
-    private @NotNull Long idParent;
+//    private @NotNull Long idParent;
 
 }

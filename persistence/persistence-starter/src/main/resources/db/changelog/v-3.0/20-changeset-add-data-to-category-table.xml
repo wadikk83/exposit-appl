@@ -8,7 +8,19 @@
     <changeSet id="220" author="wadikk">
         <insert tableName="category">
             <column name="name">parent</column>
-            <column name="idParent">0</column>
+            <column name="parent_id">null</column>
+        </insert>
+        <insert tableName="category">
+            <column name="name">category1-1</column>
+            <column name="parent_id">1</column>
+        </insert>
+        <insert tableName="category">
+            <column name="name">category1-2</column>
+            <column name="parent_id">1</column>
+        </insert>
+        <insert tableName="category">
+            <column name="name">category2-1</column>
+            <column name="parent_id">2</column>
         </insert>
 
 

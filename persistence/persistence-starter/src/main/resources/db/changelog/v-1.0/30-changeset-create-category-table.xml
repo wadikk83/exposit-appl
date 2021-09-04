@@ -16,7 +16,6 @@
                 <constraints nullable="false" unique="true"/>
             </column>
             <column name="parent_id" type="java.lang.Long"/>
-            <column name="id_parent" type="java.lang.Long"/>
         </createTable>
     </changeSet>
 </databaseChangeLog>

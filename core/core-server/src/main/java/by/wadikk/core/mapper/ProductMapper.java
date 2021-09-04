@@ -15,10 +15,6 @@ import java.util.stream.Collectors;
 @Component
 public class ProductMapper extends AbstractMapper<Product, ProductDto> {
 
-//    private List<CategoryDto> categories;
-//    private List<ProductAttributeDto> productAttribute;
-//    private List<ArticleDto> articleList;
-
     private final ModelMapper mapper;
     private final ArticleRepositoryJpa articleRepository;
 

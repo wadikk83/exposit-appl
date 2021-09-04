@@ -33,15 +33,11 @@ public class ArticleMapper extends AbstractMapper<Article, ArticleDto> {
                 .addMappings(m -> m.skip(ArticleDto::setProductId)).setPostConverter(toDtoConverter());
         mapper.typeMap(Article.class, ArticleDto.class)
                 .addMappings(m -> m.skip(ArticleDto::setStoreId)).setPostConverter(toDtoConverter());
-        /*mapper.createTypeMap(Article.class, ArticleDto.class)
-                .addMappings(m -> m.skip(ArticleDto::setStoreId)).setPostConverter(toDtoConverter());*/
 
         mapper.createTypeMap(ArticleDto.class, Article.class)
                 .addMappings(m -> m.skip(Article::setProduct)).setPostConverter(toEntityConverter());
         mapper.typeMap(ArticleDto.class, Article.class)
                 .addMappings(m -> m.skip(Article::setStore)).setPostConverter(toEntityConverter());
-        /*mapper.createTypeMap(ArticleDto.class, Article.class)
-                .addMappings(m -> m.skip(Article::setStore)).setPostConverter(toEntityConverter());*/
     }
 
     @Override
